@@ -61,7 +61,7 @@
           (if (branch? node)
             (cons node (step (into (pop queue) (children node))))
             (cons node (step (pop queue))))))))
-   (conj clojure.lang.PersistentQueue/EMPTY tree)))
+   (conj cljs.core.PersistentQueue.EMPTY tree)))
 
 (defn generation [ns]
   (concat (map (partial str "F") ns) (map (partial str "M") ns)))
