@@ -34,7 +34,7 @@
 (defn gedcom-file 
   "Read a GEDCOM and output the PedigreeModel"
   [f]
-  (read-lines {} (lines-seq f)))
+  (read-lines {} (lines-seq (clojure.string/split-lines f))))
 
 (defn names [model]
   (map (juxt :name :id) (vals model)))
