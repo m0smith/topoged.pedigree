@@ -1,6 +1,6 @@
 (ns topoged.pedigree.core
-  (:require [topoged.gedcom :refer [gedcom-seq get-value-at]]
-            [clojure.java.io :refer [file reader]]))
+  (:require [topoged.gedcom  :refer [lines-seq gedcom-seq get-value-at]]))
+            
 
 
 (defn add-parents [result rec]
@@ -34,8 +34,7 @@
 (defn gedcom-file 
   "Read a GEDCOM and output the PedigreeModel"
   [f]
-  (with-open [rdr (reader f)]
-    (read-lines {} (line-seq rdr))))
+  (read-lines {} (lines-seq f)))
 
 (defn names [model]
   (map (juxt :name :id) (vals model)))
